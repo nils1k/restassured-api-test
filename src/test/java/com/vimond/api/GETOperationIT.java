@@ -26,9 +26,6 @@ public class GETOperationIT extends Config {
 
     @Test // Sjekker at body i en GET inneholder spesifikk tekst
     public void myThirdModelTest() {
-        given().
-        when().
-        get(testURL).
-        then().body(containsString("google"));
+        given().when().get(testURL).then().body(containsString("google"));
     }
 }

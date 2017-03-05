@@ -1,9 +1,7 @@
 package com.vimond.api;
 
-import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
-import io.restassured.RestAssured;
 
 public class Config {
 

@@ -1,15 +1,15 @@
 package com.vimond.api;
 
-import io.restassured.response.Response;
+import java.util.Map;
+import java.util.HashMap;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.HashMap;
-import java.util.Map;
+import io.restassured.response.Response;
 
 public class PUTOperationIT extends Config {
 
-    static String testURL;
+    private static String testURL;
 
     @Before
     public void additionalConfig() {
@@ -20,7 +20,6 @@ public class PUTOperationIT extends Config {
     @Test // Legger inn en PUT kommando, med deler opp i response + sjekker
     public void myFourthRestAssuredTest() {
 
-        // Dytter data inn i en MAP
         Map<String, String> car = new HashMap<>();
 
         // Variabel som senere sendes til funksjon
