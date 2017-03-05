@@ -5,7 +5,6 @@ import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
 import org.junit.Before;
 import org.junit.Test;
-import sun.tools.java.Environment;
 
 import static io.restassured.RestAssured.given;
 
