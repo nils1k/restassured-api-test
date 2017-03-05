@@ -5,6 +5,7 @@ import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
 import org.junit.Before;
 import org.junit.Test;
+import sun.tools.java.Environment;
 
 import static io.restassured.RestAssured.given;
 
@@ -15,7 +16,7 @@ import static io.restassured.RestAssured.given;
  */
 public class YoutubeIT {
 
-    private static final String KEY = "AIzaSyCrpPe7oo6O75IQWdWsLKTGk48082Amp80";
+    private static final String KEY = System.getenv("YoutubeAPI");
     private static Response response;
 
     @Before
