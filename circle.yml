@@ -5,4 +5,5 @@ test:
   post:
   - mkdir -p $CIRCLE_TEST_REPORTS/junit/
   - find . -type f -regex ".*/target/failsafe-reports/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
+  - bash <(curl -s https://codecov.io/bash) -t 9e42f38a-a128-4d68-9280-173fcc9f0631
 
