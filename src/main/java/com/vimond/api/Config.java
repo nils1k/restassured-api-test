@@ -9,7 +9,6 @@ public class Config {
 
     @BeforeClass
     public static void mainSetup(){
-        //Se https://resttesttest.com/
         baseURI = "https://httpbin.org";
     }
 

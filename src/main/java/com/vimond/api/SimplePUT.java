@@ -28,19 +28,30 @@ public class SimplePUT {
         return response;
     }
 
-    public static class Car {
+    public class Car {
         private String plateNumber;
         private String color;
         private String brand;
 
-        public String setPlateNumber(String string) {
-            return string;
+        public String getBrand() { return brand; }
+
+        public String getColor() { return color; }
+
+        public String getPlateNumber() {
+            return plateNumber;
         }
-        public String setColor(String string) {
-            return string;
+
+
+        public void setPlateNumber(String plateNumber) {
+            this.plateNumber = plateNumber;
         }
-        public String setBrand(String string) {
-            return string;
+
+        public void setColor(String color) {
+            this.color = color;
+        }
+
+        public void setBrand(String brand) {
+            this.brand = brand;
         }
     }
 }
