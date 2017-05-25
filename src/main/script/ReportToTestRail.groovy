@@ -3,10 +3,10 @@ import org.apache.http.client.HttpResponseException
 
 import static groovyx.net.http.ContentType.*
 
-def buildNumber = System.getenv("CIRCLE_BUILD_NUM")
+def testSectionName = "CircleCI Integration Tests for Build Number ${System.getenv("CIRCLE_BUILD_NUM")}"
 def circleCIResultFilesPath = "${System.getenv("CIRCLE_TEST_REPORTS")}/junit/"
 
-println "CircleCI Build Number: ${buildNumber}"
+println "CircleCI Build Number: ${testSectionName}"
 println "CircleCI Test Result Path: ${circleCIResultFilesPath}"
 println "CircleCI TestRail API Key: ${System.getenv("TestRailAPI")}"
 
@@ -25,13 +25,13 @@ testrailAPI.defaultRequestHeaders."Authorization" = "Basic ${authCredentials}"
 try {
     def testSection = testrailAPI.post(
             uri: new URI("${baseURI}add_section/1"),
-            body: [name: "CircleCI Integration Tests for Build Number $buildNumber"],
+            body: [name: testSectionName],
             requestContentType: JSON
     )
 
     def testRun = testrailAPI.post(
             uri: new URI("${baseURI}add_run/1"),
-            body: [name: "CircleCI Test Run for Build Number $buildNumber"],
+            body: [name: testSectionName],
             requestContentType: JSON
     )
 
