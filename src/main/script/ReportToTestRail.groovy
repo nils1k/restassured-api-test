@@ -3,8 +3,11 @@ import org.apache.http.client.HttpResponseException
 
 import static groovyx.net.http.ContentType.*
 
-def buildNumber = System.getProperty("CIRCLE_BUILD_NUM")
-def circleCIResultFilesPath = "${System.getProperty("CIRCLE_TEST_REPORTS")}/junit/"
+def buildNumber = System.getProperty('$CIRCLE_BUILD_NUM')
+println "CircleCI Test Result Path: ${buildNumber}"
+def circleCIResultFilesPath = "${System.getProperty('$CIRCLE_TEST_REPORTS')}/junit/"
+println "CircleCI Test Result Path: ${circleCIResultFilesPath}"
+println "CircleCI Test Result Path: ${System.getProperty('TestRailAPI')}"
 
 // Only used for debugging at localhost
 def localResultFilesPath = "${System.getProperty("user.dir")}/target/failsafe-reports/"
