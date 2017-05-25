@@ -7,6 +7,7 @@ def testSectionName = "CircleCI Integration Tests for Build Number ${System.gete
 def circleCIResultFilesPath = "${System.getenv("CIRCLE_TEST_REPORTS")}/junit/"
 
 println "CircleCI Build Number: ${testSectionName}"
+println "Class of Build number string: ${getClass(testSectionName)}"
 println "CircleCI Test Result Path: ${circleCIResultFilesPath}"
 println "CircleCI TestRail API Key: ${System.getenv("TestRailAPI")}"
 
@@ -25,13 +26,13 @@ testrailAPI.defaultRequestHeaders."Authorization" = "Basic ${authCredentials}"
 try {
     def testSection = testrailAPI.post(
             uri: new URI("${baseURI}add_section/1"),
-            body: [name: testSectionName],
+            body: [name: testSectionName.toString()],
             requestContentType: JSON
     )
 
     def testRun = testrailAPI.post(
             uri: new URI("${baseURI}add_run/1"),
-            body: [name: testSectionName],
+            body: [name: testSectionName.toString()],
             requestContentType: JSON
     )
 
