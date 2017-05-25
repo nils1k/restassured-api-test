@@ -6,14 +6,8 @@ import static groovyx.net.http.ContentType.*
 def testSectionName = "CircleCI Integration Tests for Build Number ${System.getenv("CIRCLE_BUILD_NUM")}"
 def circleCIResultFilesPath = "${System.getenv("CIRCLE_TEST_REPORTS")}/junit/"
 
-println "CircleCI Build Number: ${testSectionName}"
-println "Class of Build number string: ${getClass(testSectionName)}"
-println "CircleCI Test Result Path: ${circleCIResultFilesPath}"
-println "CircleCI TestRail API Key: ${System.getenv("TestRailAPI")}"
-
 // Only used for debugging at localhost
 def localResultFilesPath = "${System.getProperty("user.dir")}/target/failsafe-reports/"
-
 def junitResultFiles = new FileNameFinder().getFileNames(circleCIResultFilesPath, "TEST-*.xml")
 
 def testrailAPI = new RESTClient("https://knilsen.testrail.net/")
