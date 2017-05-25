@@ -25,13 +25,13 @@ testrailAPI.defaultRequestHeaders."Authorization" = "Basic ${authCredentials}"
 try {
     def testSection = testrailAPI.post(
             uri: new URI("${baseURI}add_section/1"),
-            body: [name: "CircleCI Integration Tests for Build Number ${buildNumber}"],
+            body: [name: "CircleCI Integration Tests for Build Number ${buildNumber.toString()}"],
             requestContentType: JSON
     )
 
     def testRun = testrailAPI.post(
             uri: new URI("${baseURI}add_run/1"),
-            body: [name: "CircleCI Test Run for Build Number ${buildNumber}"],
+            body: [name: "CircleCI Test Run for Build Number ${buildNumber.toString()}"],
             requestContentType: JSON
     )
 
