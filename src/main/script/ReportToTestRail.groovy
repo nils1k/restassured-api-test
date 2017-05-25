@@ -3,11 +3,12 @@ import org.apache.http.client.HttpResponseException
 
 import static groovyx.net.http.ContentType.*
 
-def buildNumber = System.getProperty('$CIRCLE_BUILD_NUM')
-println "CircleCI Test Result Path: ${buildNumber}"
-def circleCIResultFilesPath = "${System.getProperty('$CIRCLE_TEST_REPORTS')}/junit/"
+def buildNumber = System.getenv("CIRCLE_BUILD_NUM")
+def circleCIResultFilesPath = "${System.getenv("CIRCLE_TEST_REPORTS")}/junit/"
+
+println "CircleCI Build Number: ${buildNumber}"
 println "CircleCI Test Result Path: ${circleCIResultFilesPath}"
-println "CircleCI Test Result Path: ${System.getProperty('TestRailAPI')}"
+println "CircleCI TestRail API Key: ${System.getenv("TestRailAPI")}"
 
 // Only used for debugging at localhost
 def localResultFilesPath = "${System.getProperty("user.dir")}/target/failsafe-reports/"
@@ -16,7 +17,7 @@ def junitResultFiles = new FileNameFinder().getFileNames(circleCIResultFilesPath
 
 def testrailAPI = new RESTClient("https://knilsen.testrail.net/")
 def baseURI = "${testrailAPI.uri.toString()}index.php?/api/v2/"
-def authCredentials = "testrail@kristiannilsen.com:${System.getProperty("TestRailAPI")}".bytes.encodeBase64()
+def authCredentials = "testrail@kristiannilsen.com:${System.getenv("TestRailAPI")}".bytes.encodeBase64()
 
 testrailAPI.defaultRequestHeaders."Content-Type" = "application/json"
 testrailAPI.defaultRequestHeaders."Authorization" = "Basic ${authCredentials}"
