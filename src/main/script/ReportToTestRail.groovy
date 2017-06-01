@@ -63,7 +63,7 @@ try {
     }
 
     testrailAPI.post(uri: new URI("${baseURI}close_run/${testRun.data.id}"))
-    
+
 } catch (HttpResponseException ex) {
     r = ex.response
     println("Success: $r.success")
